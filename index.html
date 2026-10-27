@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaeTambak – Pasar Udang Berbasis Ukuran</title>
+<link rel="icon" href="img/wae-favicon.png">
+<link rel="stylesheet" href="wae-style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#beranda" class="logo"><img src="img/wae-logo.png" alt="WaeTambak" width="92" height="46"></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu">
+      <a href="#beranda">Beranda</a>
+      <a href="#proses">Cara Kerja</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#ukuran">Simulasi Size</a>
+      <a href="#jual">Ajukan Penjualan</a>
+      <a href="#permintaan">Daftar Saya</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <span class="pill reveal">🦐 Marketplace udang berbasis ukuran</span>
+    <h1 class="reveal">Pasar &amp; Penampungan<br><span class="grad">Udang Digital</span> WaeTambak</h1>
+    <p class="reveal">Jual-beli udang vannamei berdasarkan <b>ukuran (size)</b>. Harga per kilo transparan, dan udang yang sudah disortir dihargai lebih baik.</p>
+    <div class="cards">
+      <div class="card green reveal">
+        <div class="ic">🧑‍🌾</div>
+        <h2>Bagi Petambak</h2>
+        <p>Ajukan hasil panen dan lihat estimasi harga per kilo sebelum menjual.</p>
+        <a class="btn orange" href="#jual">Ajukan Penjualan Hasil Panen</a>
+      </div>
+      <div class="card blue reveal">
+        <div class="ic">🏭</div>
+        <h2>Bagi Pembeli</h2>
+        <p>Lihat katalog udang per ukuran lengkap dengan harga dan stok.</p>
+        <a class="btn navy" href="#katalog">Lihat Katalog Pasokan</a>
+      </div>
+    </div>
+  </div>
+  <svg class="waves" viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 C1400,100 1600,20 1800,60 C2000,100 2200,20 2400,60 L2400,120 L0,120 Z"/>
+    <path class="w2" d="M0,70 C200,30 400,100 600,70 C800,30 1000,100 1200,70 C1400,30 1600,100 1800,70 C2000,30 2200,100 2400,70 L2400,120 L0,120 Z"/>
+  </svg>
+</section>
+
+<!-- TICKER HARGA -->
+<section class="ticker-sec">
+  <div class="wrap ticker-head"><b>📈 Pantauan Harga Hari Ini</b> <small>(data contoh)</small></div>
+  <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+</section>
+
+<!-- STATS -->
+<section class="wrap stats">
+  <div class="stat reveal"><div class="num" id="stSize" data-count="0"></div><div>Ukuran udang tersedia</div></div>
+  <div class="stat reveal"><div class="num" id="stStok" data-count="0" data-suffix=" kg"></div><div>Total stok (contoh)</div></div>
+  <div class="stat reveal"><div class="num" id="stPot" data-count="0" data-prefix="−" data-suffix="%"></div><div>Potongan harga udang campur</div></div>
+</section>
+
+<!-- PROSES -->
+<section class="wrap" id="proses">
+  <h2 class="sec reveal">Proses Kami</h2>
+  <div class="steps">
+    <div class="step reveal"><div class="sic">📡</div><b>Pembinaan &amp; Sensor AIoT</b><span>Kualitas air tambak terpantau sampai panen.</span></div>
+    <div class="arrow reveal">→</div>
+    <div class="step reveal"><div class="sic">⚖️</div><b>Penimbangan Adil &amp; QC</b><span>Disortir per ukuran, ditimbang transparan.</span></div>
+    <div class="arrow reveal">→</div>
+    <div class="step reveal"><div class="sic">🚚</div><b>Distribusi Logistik</b><span>Dikirim ke pembeli skala besar.</span></div>
+  </div>
+</section>
+
+<!-- KATALOG -->
+<section class="wrap" id="katalog">
+  <h2 class="sec reveal">Katalog Udang per Ukuran</h2>
+  <p class="note reveal">⚠️ Harga &amp; stok adalah <b>data contoh</b> (edit di <code>wae-script.js</code>). Size = jumlah ekor per kg; makin kecil angkanya, makin besar udangnya.</p>
+
+  <div class="toolbar reveal">
+    <label>Cari size
+      <select id="fSize"><option value="">Semua</option></select>
+    </label>
+    <label>Urutkan
+      <select id="fSort">
+        <option value="size-asc">Size (besar → kecil)</option>
+        <option value="size-desc">Size (kecil → besar)</option>
+        <option value="price-desc">Harga tertinggi</option>
+        <option value="price-asc">Harga terendah</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="tbl-wrap reveal" id="tblWrap">
+    <table>
+      <thead>
+        <tr><th>Size</th><th>Ekor / kg</th><th>± Berat / ekor</th><th>Harga / kg</th><th>Stok tersedia</th><th></th></tr>
+      </thead>
+      <tbody id="katalogBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SIMULASI SIZE -->
+<section class="wrap" id="ukuran">
+  <h2 class="sec reveal">Simulasi Ukuran Udang</h2>
+  <p class="hint reveal">Geser slider untuk melihat apa arti "size". Ilustrasi hanya perkiraan skala (panjang ≈ akar pangkat tiga dari berat).</p>
+  <div class="sim reveal">
+    <div class="sim-left">
+      <div class="sim-stage"><img id="simShrimp" src="img/wae-favicon.png" alt="Ilustrasi udang"></div>
+      <input type="range" id="sizeRange" min="20" max="100" step="10" value="50">
+      <div class="range-labels"><span>Besar (20)</span><span>Kecil (100)</span></div>
+    </div>
+    <div class="sim-right">
+      <h3 id="simSize">Size 50</h3>
+      <ul class="facts">
+        <li><span>Jumlah per kg</span><b id="simEkor"></b></li>
+        <li><span>± Berat per ekor</span><b id="simGram"></b></li>
+        <li><span>Harga contoh / kg</span><b id="simHarga"></b></li>
+        <li><span>Stok contoh</span><b id="simStok"></b></li>
+      </ul>
+      <p class="hint">Isi 1 kg udang size ini:</p>
+      <div class="bag" id="simBag"></div>
+      <button class="btn navy" id="simGo" type="button">Lihat di katalog</button>
+    </div>
+  </div>
+</section>
+
+<!-- FORM JUAL -->
+<section class="wrap" id="jual">
+  <h2 class="sec reveal">Ajukan Penjualan Hasil Panen</h2>
+  <form id="jualForm" class="form reveal" novalidate>
+
+    <label>Nama petambak / tambak
+      <input type="text" id="nama" required placeholder="mis. Pak Budi – Tambak Sidoarjo">
+    </label>
+    <label>No. WhatsApp
+      <input type="tel" id="wa" required placeholder="08xxxxxxxxxx">
+    </label>
+
+    <fieldset>
+      <legend>Apakah hasil panen sudah dikelompokkan berdasarkan ukuran?</legend>
+      <label class="choice"><input type="radio" name="sortir" value="ya"><span>✅ Sudah, per ukuran</span></label>
+      <label class="choice"><input type="radio" name="sortir" value="campur"><span>🔀 Belum, masih campur</span></label>
+    </fieldset>
+
+    <div id="boxYa" class="hidden">
+      <p class="hint">Isi berat (kg) untuk size yang kamu punya. Kosongkan yang tidak ada.</p>
+      <div id="sizeInputs" class="grid"></div>
+    </div>
+
+    <div id="boxCampur" class="hidden">
+      <p class="hint warn">Udang campur harganya lebih rendah <span id="potLabel"></span> karena pembeli harus menyortir ulang. Kalau bisa, sortir dulu agar harga lebih baik.</p>
+      <label>Total berat panen (kg)
+        <input type="number" id="campurKg" min="1" placeholder="mis. 500">
+      </label>
+      <label>Perkiraan ukuran dominan
+        <select id="campurSize"></select>
+      </label>
+    </div>
+
+    <label>Tanggal panen
+      <input type="date" id="tglPanen" required>
+    </label>
+
+    <div id="estimasi" class="est hidden"></div>
+
+    <button class="btn orange" type="submit">Kirim Pengajuan</button>
+    <p id="formMsg" class="msg"></p>
+  </form>
+</section>
+
+<!-- DAFTAR -->
+<section class="wrap" id="permintaan">
+  <h2 class="sec reveal">Daftar Saya (tersimpan di browser ini)</h2>
+  <div class="split reveal">
+    <div>
+      <h3>Pengajuan Penjualan</h3>
+      <ul id="listJual" class="list"></ul>
+    </div>
+    <div>
+      <h3>Permintaan Beli</h3>
+      <ul id="listBeli" class="list"></ul>
+    </div>
+  </div>
+  <button class="btn ghost" id="resetData" type="button">Hapus semua data tersimpan</button>
+</section>
+
+<!-- MODAL BELI -->
+<div class="modal hidden" id="modal">
+  <div class="modal-box">
+    <h3>Minta Penawaran – <span id="mSize"></span></h3>
+    <label>Nama / perusahaan
+      <input type="text" id="mNama" placeholder="Nama pembeli">
+    </label>
+    <label>Jumlah dibutuhkan (kg)
+      <input type="number" id="mKg" min="1" placeholder="mis. 200">
+    </label>
+    <p id="mTotal" class="hint"></p>
+    <div class="row">
+      <button class="btn navy" id="mKirim" type="button">Kirim</button>
+      <button class="btn ghost" id="mBatal" type="button">Batal</button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+<button id="toTop" class="to-top" aria-label="Ke atas">↑</button>
+
+<footer>
+  <img src="img/wae-logo.png" alt="WaeTambak" class="foot-logo" width="80" height="40">
+  <div>© WaeTambak – prototipe. Harga bersifat contoh, bukan penawaran resmi.</div>
+</footer>
+
+<script src="wae-script.js"></script>
+</body>
+</html>
