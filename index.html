@@ -57,14 +57,14 @@
 
 <!-- TICKER HARGA -->
 <section class="ticker-sec">
-  <div class="wrap ticker-head"><b>📈 Pantauan Harga Hari Ini</b> <small>(data contoh)</small></div>
+  <div class="wrap ticker-head"><b>📈 Pantauan Harga Hari Ini</b></div>
   <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
 </section>
 
 <!-- STATS -->
 <section class="wrap stats">
   <div class="stat reveal"><div class="num" id="stSize" data-count="0"></div><div>Ukuran udang tersedia</div></div>
-  <div class="stat reveal"><div class="num" id="stStok" data-count="0" data-suffix=" kg"></div><div>Total stok (contoh)</div></div>
+  <div class="stat reveal"><div class="num" id="stStok" data-count="0" data-suffix=" kg"></div><div>Total stok tersedia</div></div>
   <div class="stat reveal"><div class="num" id="stPot" data-count="0" data-prefix="−" data-suffix="%"></div><div>Potongan harga udang campur</div></div>
 </section>
 
@@ -83,7 +83,7 @@
 <!-- KATALOG -->
 <section class="wrap" id="katalog">
   <h2 class="sec reveal">Katalog Udang per Ukuran</h2>
-  <p class="note reveal">⚠️ Harga &amp; stok adalah <b>data contoh</b> (edit di <code>wae-script.js</code>). Size = jumlah ekor per kg; makin kecil angkanya, makin besar udangnya.</p>
+  <p class="note reveal">ℹ️ Size = jumlah ekor per kg. Makin kecil angkanya, makin besar udangnya.</p>
 
   <div class="toolbar reveal">
     <label>Cari size
@@ -112,7 +112,7 @@
 <!-- SIMULASI SIZE -->
 <section class="wrap" id="ukuran">
   <h2 class="sec reveal">Simulasi Ukuran Udang</h2>
-  <p class="hint reveal">Geser slider untuk melihat apa arti "size". Ilustrasi hanya perkiraan skala (panjang ≈ akar pangkat tiga dari berat).</p>
+  <p class="hint reveal">Geser slider untuk melihat apa arti "size".</p>
   <div class="sim reveal">
     <div class="sim-left">
       <div class="sim-stage"><img id="simShrimp" src="img/wae-favicon.png" alt="Ilustrasi udang"></div>
@@ -124,8 +124,8 @@
       <ul class="facts">
         <li><span>Jumlah per kg</span><b id="simEkor"></b></li>
         <li><span>± Berat per ekor</span><b id="simGram"></b></li>
-        <li><span>Harga contoh / kg</span><b id="simHarga"></b></li>
-        <li><span>Stok contoh</span><b id="simStok"></b></li>
+        <li><span>Harga / kg</span><b id="simHarga"></b></li>
+        <li><span>Stok tersedia</span><b id="simStok"></b></li>
       </ul>
       <p class="hint">Isi 1 kg udang size ini:</p>
       <div class="bag" id="simBag"></div>
@@ -217,7 +217,7 @@
 
 <footer>
   <img src="img/wae-logo.png" alt="WaeTambak" class="foot-logo" width="80" height="40">
-  <div>© WaeTambak – prototipe. Harga bersifat contoh, bukan penawaran resmi.</div>
+  <div>© WaeTambak</div>
 </footer>
 
 <script src="wae-script.js"></script>

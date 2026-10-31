@@ -1,5 +1,5 @@
-// ============ DATA CONTOH (edit di sini) ============
-// size = jumlah ekor per kg. Harga, stok & tren HANYA contoh, bukan harga pasar resmi.
+// ============ DATA HARGA & STOK (edit di sini) ============
+// size = jumlah ekor per kg.
 const SIZES = [
   { size: 20,  harga: 105000, stok: 120,  tren: 1.2 },
   { size: 30,  harga: 90000,  stok: 300,  tren: 0.6 },
@@ -11,7 +11,7 @@ const SIZES = [
   { size: 90,  harga: 53000,  stok: 40,   tren: -0.6 },
   { size: 100, harga: 49000,  stok: 700,  tren: 0.5 },
 ];
-// Potongan harga kalau udang masih campur (ASUMSI, sesuaikan dengan kondisi nyata)
+// Potongan harga kalau udang masih campur
 const POTONGAN_CAMPUR = 0.15;
 const STOK_MENIPIS = 100;
 

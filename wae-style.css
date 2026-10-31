@@ -151,7 +151,7 @@ tr.in .bar i{width:var(--w)}
 /* simulator */
 .sim{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
 .sim-stage{height:200px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#eaf3ff,#d6e6f9);border-radius:12px;margin-bottom:14px;overflow:hidden}
-.sim-stage img{transition:width .5s cubic-bezier(.3,1.4,.5,1);animation:bob 3.5s ease-in-out infinite}
+.sim-stage img{height:auto;max-height:170px;object-fit:contain;transition:width .5s cubic-bezier(.3,1.4,.5,1);animation:bob 3.5s ease-in-out infinite}
 input[type=range]{width:100%;accent-color:var(--orange);cursor:pointer}
 .range-labels{display:flex;justify-content:space-between;font-size:.78rem;color:#6a7a90}
 .sim-right h3{font-size:1.5rem;color:var(--brand);margin-bottom:8px}
